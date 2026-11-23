@@ -1,0 +1,21 @@
+# Private keys and generated PKI material never enter the repository.
+# Rebuild them with bash pki/make_pki.sh
+pki/ca/
+pki/server/
+pki/client/
+pki/rogue/
+*.key
+*.pem
+*.csr
+*.srl
+
+# Runtime data
+received_files/
+evidence/
+tests/_run/
+
+# Python and capture files
+__pycache__/
+*.pyc
+*.pcap
+*.pcapng
