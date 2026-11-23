@@ -1,6 +1,6 @@
 # Secure File Transfer with Mutual TLS, Signed Evidence and Hybrid Post-Quantum Key Exchange
 
-MACS 902 Modern Cryptography, group project (Project Group `PGxx`).
+MACS 902 Modern Cryptography, group project.
 This is a teaching prototype. See "Security notes and limits" before relying on it.
 
 ## What it does
