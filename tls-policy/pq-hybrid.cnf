@@ -1,0 +1,24 @@
+# TLS policy: post-quantum hybrid (project default).
+#
+# OpenSSL reads this file once, when the library starts, through the OPENSSL_CONF
+# environment variable (tls_policy.py sets it). The [tls_policy] section is then
+# applied to every TLS context the process creates.
+
+openssl_conf = openssl_init
+
+[openssl_init]
+ssl_conf = ssl_configuration
+
+[ssl_configuration]
+system_default = tls_policy
+
+[tls_policy]
+# TLS 1.3 only (RFC 9846, which obsoletes RFC 8446).
+MinProtocol = TLSv1.3
+
+# Key exchange: X25519 + ML-KEM-768 hybrid and nothing else (RFC 10024, FIPS 203).
+# A peer that offers only classical groups is refused, so there is no silent fallback.
+Groups = X25519MLKEM768
+
+# Record protection: AES-256-GCM, with SHA-384 in the key schedule.
+Ciphersuites = TLS_AES_256_GCM_SHA384

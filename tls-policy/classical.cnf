@@ -1,0 +1,19 @@
+# TLS policy: classical baseline.
+#
+# Identical to pq-hybrid.cnf except for the key-exchange group. Used for two things:
+#   1. the benchmark, as the comparison point for the hybrid handshake;
+#   2. a fallback if the hybrid group is unavailable on a machine.
+# It offers no protection against harvest-now-decrypt-later.
+
+openssl_conf = openssl_init
+
+[openssl_init]
+ssl_conf = ssl_configuration
+
+[ssl_configuration]
+system_default = tls_policy
+
+[tls_policy]
+MinProtocol = TLSv1.3
+Groups = X25519
+Ciphersuites = TLS_AES_256_GCM_SHA384
